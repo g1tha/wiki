@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Page
+{% endblock %}
+
+{% block body %}
+<h1>Edit Page</h1>
+    <form action="{% url 'editpage' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label" for="id_{{ form.name.name }}">{{ form.name.name }} :</label>
+            <input type="text" name="name" value="{{ form.name.value }}" readonly="true" class="form-control" maxlength="100" required id="id_name">
+            </div>
+            <div class="mb-3">
+            <label class="form-label" for="id_{{ form.contents.name }}"">{{ form.contents.name }} : </label>
+            {{ form.contents }}
+            </div>
+        <input type="submit" class="btn btn-primary" value="Save">
+    </form>
+
+
+
+{% endblock %}
